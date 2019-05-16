@@ -1117,6 +1117,10 @@
             transformLeft = (-1 * points[0]) + vpOffset.left,
             newCss = {};
 
+        // Don't consider small scaling
+        if (Math.abs(self._currentZoom - scale) < 0.01)
+            scale = self._currentZoom;
+
         newCss[CSS_TRANS_ORG] = originLeft + 'px ' + originTop + 'px';
         newCss[CSS_TRANSFORM] = new Transform(transformLeft, transformTop, scale).toString();
         css(self.elements.preview, newCss);
