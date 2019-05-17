@@ -1118,7 +1118,7 @@
             newCss = {};
 
         // Don't consider small scaling
-        if (Math.abs(self._currentZoom - scale) < 0.01)
+        if (Math.abs(self._currentZoom - scale) < 0.1)
             scale = self._currentZoom;
 
         newCss[CSS_TRANS_ORG] = originLeft + 'px ' + originTop + 'px';
