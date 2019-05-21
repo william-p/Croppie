@@ -1117,10 +1117,6 @@
             transformLeft = (-1 * points[0]) + vpOffset.left,
             newCss = {};
 
-        // Don't consider small scaling
-        if (Math.abs(self._currentZoom - scale) < 0.1)
-            scale = self._currentZoom;
-
         newCss[CSS_TRANS_ORG] = originLeft + 'px ' + originTop + 'px';
         newCss[CSS_TRANSFORM] = new Transform(transformLeft, transformTop, scale).toString();
         css(self.elements.preview, newCss);
@@ -1626,6 +1622,9 @@
         },
         setZoom: function (v) {
             _setZoomerVal.call(this, v);
+            dispatchChange(this.elements.zoomer);
+        },
+        dispatchChange: function () {
             dispatchChange(this.elements.zoomer);
         },
         rotate: function (deg) {
